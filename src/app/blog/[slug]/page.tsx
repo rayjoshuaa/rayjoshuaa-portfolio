@@ -122,7 +122,7 @@ export default async function Blog({
         <img
           src={post.metadata.image}
           alt={post.metadata.title}
-          className="mb-8 aspect-[3/2] w-full max-w-[650px] rounded-xl object-cover"
+          className="mb-10 aspect-[16/9] w-full rounded-xl object-cover lg:aspect-[21/9]"
         />
       )}
       <BlogArticle html={post.source} />
