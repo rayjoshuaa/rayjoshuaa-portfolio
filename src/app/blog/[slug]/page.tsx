@@ -75,6 +75,10 @@ export default async function Blog({
     notFound();
   }
 
+  const allPosts = await getBlogPosts();
+  const morePosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 4);
+  const tags: string[] = (post.metadata as { tags?: string[] }).tags ?? [];
+
   return (
     <section id="blog">
       <BreadcrumbJsonLd items={[{ name: "Blog", href: "/blog" }, { name: post.metadata.title, href: `/blog/${post.slug}` }]} />
@@ -100,33 +104,112 @@ export default async function Blog({
           }),
         }}
       />
-      <Link
-        href="/blog"
-        className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-      >
-        <ArrowLeft className="size-4" />
-        Back to blog
-      </Link>
-      <h1 className="title max-w-[650px] text-3xl font-bold tracking-tight sm:text-4xl">
-        {post.metadata.title}
-      </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
-        <Suspense fallback={<p className="h-5" />}>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            {formatDate(post.metadata.publishedAt)} &middot; {post.metadata.readingTime}
-          </p>
-        </Suspense>
+      <div className="lg:grid lg:grid-cols-[minmax(0,780px)_300px] lg:items-start lg:justify-between lg:gap-12">
+        <div>
+          <Link
+            href="/blog"
+            className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <ArrowLeft className="size-4" />
+            Back to blog
+          </Link>
+          <h1 className="title text-3xl font-bold tracking-tight sm:text-4xl">
+            {post.metadata.title}
+          </h1>
+          <div className="mt-2 mb-8 flex items-center justify-between text-sm">
+            <Suspense fallback={<p className="h-5" />}>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                {formatDate(post.metadata.publishedAt)} &middot; {post.metadata.readingTime}
+              </p>
+            </Suspense>
+          </div>
+          {post.metadata.image && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={post.metadata.image}
+              alt={post.metadata.title}
+              className="mb-10 aspect-[3/2] w-full rounded-xl object-cover"
+            />
+          )}
+          <BlogArticle html={post.source} />
+          <BlogInteractions slug={params.slug} />
+        </div>
+        <aside className="mt-14 space-y-6 lg:sticky lg:top-24 lg:mt-2">
+          <div className="rounded-xl border bg-card p-6 text-card-foreground shadow-sm">
+            <div className="flex items-center gap-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={DATA.avatarUrl}
+                alt={DATA.name}
+                className="size-14 shrink-0 rounded-full object-cover"
+              />
+              <div>
+                <p className="font-semibold leading-tight">{DATA.name}</p>
+                <p className="mt-0.5 text-sm leading-snug text-muted-foreground">
+                  ICT &amp; Robotics Teacher · Bangkok
+                </p>
+              </div>
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              I teach ICT and robotics, and build tools for classrooms. Every
+              article here starts as one of my LinkedIn posts — expanded, with
+              its source cited.
+            </p>
+            <Link
+              href="/services"
+              className="mt-5 inline-flex w-full items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              Work with me
+            </Link>
+          </div>
+          {morePosts.length > 0 && (
+            <div className="rounded-xl border bg-card p-6 text-card-foreground shadow-sm">
+              <h2 className="text-sm font-semibold uppercase tracking-wide">
+                More from the blog
+              </h2>
+              <ul className="mt-4 space-y-4">
+                {morePosts.map((p) => (
+                  <li key={p.slug}>
+                    <Link href={`/blog/${p.slug}`} className="group block">
+                      <p className="text-sm font-medium leading-snug group-hover:underline">
+                        {p.metadata.title}
+                      </p>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        {formatDate(p.metadata.publishedAt)} &middot;{" "}
+                        {p.metadata.readingTime}
+                      </p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/blog"
+                className="mt-5 inline-block text-sm font-medium hover:underline"
+              >
+                View all articles →
+              </Link>
+            </div>
+          )}
+          {tags.length > 0 && (
+            <div className="rounded-xl border bg-card p-6 text-card-foreground shadow-sm">
+              <h2 className="text-sm font-semibold uppercase tracking-wide">
+                Topics in this article
+              </h2>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {tags.map((tag) => (
+                  <Link
+                    key={tag}
+                    href="/blog"
+                    className="rounded-full border px-3 py-1 text-xs font-medium capitalize transition-colors hover:bg-muted"
+                  >
+                    {tag}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </aside>
       </div>
-      {post.metadata.image && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={post.metadata.image}
-          alt={post.metadata.title}
-          className="mb-10 aspect-[16/9] w-full rounded-xl object-cover lg:aspect-[21/9]"
-        />
-      )}
-      <BlogArticle html={post.source} />
-      <BlogInteractions slug={params.slug} />
     </section>
   );
 }
