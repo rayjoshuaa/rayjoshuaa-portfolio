@@ -104,7 +104,7 @@ export default async function Blog({
           }),
         }}
       />
-      <div className="lg:grid lg:grid-cols-[minmax(0,780px)_300px] lg:items-start lg:justify-between lg:gap-12">
+      <div className="lg:grid lg:grid-cols-[minmax(0,820px)_320px] lg:items-start lg:justify-center lg:gap-14">
         <div>
           <Link
             href="/blog"
@@ -162,6 +162,37 @@ export default async function Blog({
               Work with me
             </Link>
           </div>
+          <div className="rounded-xl border bg-card p-6 text-card-foreground shadow-sm">
+            <h2 className="text-sm font-semibold uppercase tracking-wide">
+              Share this article
+            </h2>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${DATA.url}/blog/${post.slug}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors hover:bg-muted"
+              >
+                LinkedIn
+              </a>
+              <a
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`${DATA.url}/blog/${post.slug}`)}&text=${encodeURIComponent(post.metadata.title)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors hover:bg-muted"
+              >
+                X
+              </a>
+              <a
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${DATA.url}/blog/${post.slug}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors hover:bg-muted"
+              >
+                Facebook
+              </a>
+            </div>
+          </div>
           {morePosts.length > 0 && (
             <div className="rounded-xl border bg-card p-6 text-card-foreground shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wide">
@@ -208,6 +239,22 @@ export default async function Blog({
               </div>
             </div>
           )}
+          <div className="rounded-xl bg-neutral-900 p-6 text-white shadow-sm dark:bg-neutral-100 dark:text-neutral-900">
+            <h2 className="text-sm font-semibold uppercase tracking-wide">
+              Need a website?
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-neutral-300 dark:text-neutral-600">
+              I build CMS websites, manage social media, and develop custom web
+              apps for schools and small businesses — fixed quote after a free
+              consultation.
+            </p>
+            <Link
+              href="/services"
+              className="mt-5 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-200 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-700"
+            >
+              See my services
+            </Link>
+          </div>
         </aside>
       </div>
     </section>
