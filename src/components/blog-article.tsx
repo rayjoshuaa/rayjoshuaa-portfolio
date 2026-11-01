@@ -62,7 +62,7 @@ export function BlogArticle({ html }: { html: string }) {
     <>
       <article
         ref={articleRef}
-        className="prose dark:prose-invert"
+        className="prose max-w-none dark:prose-invert"
         dangerouslySetInnerHTML={{ __html: html }}
       />
 
