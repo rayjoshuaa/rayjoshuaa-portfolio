@@ -1,0 +1,75 @@
+---
+title: "Your AI Prompts Are Too Short — Google's 5-Part PARTS Formula Fixes That"
+publishedAt: "2026-11-18"
+summary: "Google's own LearnLM prompt guide calls a one-line prompt like 'Create a lesson on DNA' vague — and says it returns generic ideas that don't match your topic or your class. The fix is five letters: PARTS. Persona, Act, Recipient, Theme, Structure — a simple checklist that turns a chatbot into a teaching assistant you can actually use."
+tags: ["teaching", "ai", "prompts", "how-to"]
+image: "/assets/blog/ai-prompts-teachers-google-parts-formula.jpg"
+---
+
+Google's own prompting guide calls a one-line prompt like "Create a lesson on DNA" vague — and says it will return generic ideas that don't match your topic or your class. **AI prompts for teachers** fail the same way most of the time: not because the AI is weak, but because the prompt asks for nothing specific.
+
+The fix is five letters: **PARTS**.
+
+## What Google's guide actually says
+
+The source is Google's *LearnLM Partner Prompt Guide* (2025), the official guide to prompting Gemini now that it is infused with LearnLM, Google's family of models fine-tuned for learning. LearnLM is built to scaffold, ask guiding questions and give feedback instead of just handing over answers — and in learning-focused evaluations, expert pedagogical raters preferred it over GPT-4o and Claude 3.7.
+
+The guide shows the same request written three ways:
+
+- **Good:** "Create a lesson on DNA for high school students."
+- **Better:** "You are a biology teacher. Write a lesson introducing DNA structure for inquiry-based learning."
+- **Best:** "You are a high school biology educator. Design a lesson for 10th grade students introducing the structure and function of DNA. Tailor the lesson for an inquiry-based science class, include an engaging lab activity and provide a claim-evidence-reasoning (CER) writing prompt as the exit ticket."
+
+Google's verdict on the first version is blunt: it is vague about which aspect of DNA to teach, which grade level it is for, or what teaching approach is expected, so Gemini may return general ideas not aligned to the topic. The best version works because it names a role, an audience, an objective, a teaching approach and a format.
+
+That is what PARTS is:
+
+- **P — Persona:** set the AI's role, like "instructional designer" or "coach."
+- **A — Act:** ask clearly for the task, with an action word like create, rewrite or explain.
+- **R — Recipient:** say who it is for — your students, their age, their level.
+- **T — Theme:** add your topic or concept, like "Python loops" or "DNA structure."
+- **S — Structure:** name the format — a 5E lesson plan, a rubric, a quiz.
+
+## Why most teachers blame the wrong thing
+
+When AI gives you a useless lesson plan, the natural reaction is to decide AI is useless. Most of the time, the AI did exactly what it was asked to do — the prompt just asked for almost nothing.
+
+Think of it like asking a colleague to "teach something about computers." They would come back and ask which year group, which topic, how long, and what the students should be able to do by the end. A chatbot cannot ask you those questions, so it guesses — and the guess is always generic. That is why two teachers using the same tool get completely different results: three sentences gets you a worksheet for tomorrow, three words gets you a wall of text to delete. The skill is not technical. It is the same skill as writing a clear learning objective: say who, say what, say how you will know it worked.
+
+## In my classroom
+
+I teach ICT, Computer Science and Robotics in Bangkok, and I use this exact framework when I ask AI to help me plan. Last week I needed a Year 7 lesson introducing Python loops. Instead of typing "Make a lesson on Python loops for Year 7," I wrote the PARTS version:
+
+"You are an ICT teacher. Design a 40-minute lesson for Year 7 students introducing for loops in Python. They already know variables and print statements. Include a short starter, a guided example that draws a pattern with a loop, a pair activity where students predict a loop's output before running it, and a three-question exit ticket."
+
+What came back was usable in the same lesson: the examples matched what my students already knew, and the exit ticket actually tested the idea. The one-line version would have given me a generic lecture that assumed nothing about my class and tested nothing.
+
+I do the same thing in Robotics. When I ask for a debugging checklist for an Arduino line-following robot, I name the board, the sensor, the age group and the format — a one-page checklist, not an essay. The AI stops writing a textbook chapter and starts writing something a Year 8 student can hold in one hand while they look at the robot.
+
+## Steal this: the 5-minute PARTS checklist
+
+Copy this template and fill in the brackets:
+
+> **Persona:** You are a [subject] teacher. **Act:** Design / Rewrite / Create a [thing]. **Recipient:** For [year group] students who already know [what they know]. **Theme:** About [your exact topic]. **Structure:** In the form of [lesson plan / rubric / quiz], including [the parts you need] and ending with [how you will check learning].
+
+Three prompts to try this week:
+
+1. **A lesson plan:** "You are an ICT teacher. Design a 40-minute lesson for Year 8 students introducing binary numbers. They already know place value in decimal. Include a starter game, a hands-on card activity for converting numbers, and a five-question exit ticket."
+2. **A rubric:** "You are an assessment designer. Write a 3-point rubric (Developing, Proficient, Exemplary) for a Year 9 Scratch game project. Focus on working code, clear player instructions, and originality — not on how fancy the graphics are."
+3. **A quiz:** "You are a tutor preparing my Year 7 class for a test on internet safety. Generate 10 questions that test understanding, not memorisation. Start easy, get harder, and explain each answer."
+
+Two more habits: **never accept the first draft** — ask for one revision ("make the starter shorter and add a real-world example") and the output usually jumps in quality. And **fact-check everything before it reaches students**: a good prompt improves the structure, not the truth of the facts.
+
+## The honest caveat
+
+This guide was written for developers building learning tools with LearnLM, not as a classroom manual — most examples are science and maths, so translate them into your own subject. And PARTS fixes the shape of the answer, not the truth of it: Google itself warns that Gemini can make mistakes, so a beautifully structured lesson plan can still contain a wrong fact. The framework makes the AI useful. It does not make it right.
+
+A vague prompt gets a vague lesson. Five letters is all it takes to change that.
+
+What is the one-line prompt you keep typing — and what would it look like with PARTS filled in?
+
+---
+
+**Sources:** Google (2025), *LearnLM Partner Prompt Guide* — [learnlm_prompt_guide.pdf (Google)](https://services.google.com/fh/files/misc/learnlm_prompt_guide.pdf). Also cited: Google, *AI in Education: From Potential to Practice* (November 2026).
+
+*Title image: original clay artwork created for this blog.*
