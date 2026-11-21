@@ -1,0 +1,64 @@
+---
+title: "WordPress 7.1 Is Out — Your School Website Can Finally Look Right on Every Phone, No Code Needed"
+publishedAt: "2026-11-21"
+summary: "WordPress 7.1 shipped in August 2026, and it is the most useful update in years for the people who actually run a school or small business website. Responsive styles without CSS, a proper image editor, @mentions in Notes, a Tabs block, and faster image uploads. Here is what changed, what it means for your site, and the five things to check before you update."
+tags: ["wordpress", "web-development", "freelancing"]
+image: "/assets/blog/wordpress-7-1-school-business-website.jpg"
+---
+
+**WordPress 7.1 is out, and it fixes the exact problem I hear from school and small business owners most often: the website looks fine on my computer, but wrong on my phone.** The new release lets you set how every block looks on different screen sizes, right in the editor, without writing a line of CSS.
+
+That is the headline from WordPress 7.1, released in August 2026. For the people who run a website rather than build one for a living, it is the most useful WordPress update in years.
+
+## What the release actually includes
+
+WordPress 7.1 is a major release, and the official release notes read like a to-do list written by someone who runs a real website. Here are the changes that matter most.
+
+**Responsive styles, no code required.** You can now set how a block looks at different screen sizes directly in the editor, for both Global Styles and individual blocks. Before this, making a heading smaller on phones usually meant custom CSS or a page-builder workaround. Now it is a setting in the editor. WordPress calls this "a major step toward built-in responsive design," and for a school site that parents mostly open on their phones, that step matters.
+
+**A real media editor.** The old inline cropping tool is gone, replaced by a dedicated editor with freeform and aspect-ratio cropping, flip, precise rotation, and metadata editing in one place. If your school uploads photos from assemblies or your shop uploads product shots, you can now fix a crooked or badly framed photo without opening another app.
+
+**Notes with @mentions and rich text.** Notes, the in-editor feedback feature, now support bold, italic, code and links, and you can type "@" to tag a collaborator, who gets an email notification. You can also leave a note on a specific selection of text instead of a whole block. For a school website run by a small team, that means the head teacher can tag the ICT teacher on the exact sentence that needs fixing, instead of sending a screenshot in a chat group.
+
+**A Tabs block.** You can now organize content into tabbed panels instead of showing everything at once: a school admissions page with tabs for fees, dates and requirements, or a business page with tabs for services, prices and FAQs.
+
+**Faster, lighter image uploads.** Image compression, resizing and thumbnail generation now happen in the browser instead of on the server, so large uploads will not hit PHP memory limits or time out on shared hosting. The release also adds built-in support for AVIF and HEIC images, which means smaller files and faster pages.
+
+One more date worth knowing: WordPress 7.2 is already in beta and is due on **December 8, 2026**, so 7.1 is the stable version to move to now, not a release you should wait out.
+
+## Why it matters: most school and business sites are edited by non-developers
+
+Most people read release notes as a developer story: new APIs, new blocks, new internals. But for a school or a small business, a website update is a people story. The person updating the homepage is usually a teacher, an office manager or the business owner, not a developer.
+
+That is why 7.1 matters more than it looks. Every feature above removes a moment where a non-developer used to get stuck, and those small delays are why school websites go stale: the news page stops being updated, the fees page still shows last year's numbers, and parents start messaging the office instead.
+
+The responsive styles are the biggest deal of the lot. In Bangkok, almost every parent I know checks a school website on a phone first. A timetable that is readable on a laptop but cramped on a phone is not a design flaw, it is a communication failure, and WordPress 7.1 gives the person editing the page the tool to fix that directly, in the same place they write the content.
+
+## In my classroom and client work
+
+I build WordPress and Elementor sites for small businesses alongside teaching ICT and robotics in Bangkok. So I read releases like this one with two questions: what gets easier for me, and what gets easier for the client after I hand the site over?
+
+The answer this time is mostly the second one. When I hand a site to a school office or a small business owner, I can now show them how to fix a heading on mobile, crop a photo, and leave a note for a colleague, all inside the editor they already use. That is a shorter training session and a site that stays up to date after I leave.
+
+Here is a concrete example. A school I work with has a weekly news page, and the photos come from teachers' phones. Before 7.1, a teacher uploading a portrait photo into a landscape slot would get a stretched or awkwardly cropped image, and fixing it meant asking me or opening a photo editor. With the new media editor, the teacher crops it in the same screen, and the browser-side compression makes the file smaller, so the page loads faster for parents on mobile data.
+
+## Steal this: four things to do before you update to 7.1
+
+You can do this in an afternoon, and you should not skip step one:
+
+1. **Back up first, then update on a copy if you can.** Take a full backup of files and database. If your host offers a staging copy, update there first and click through your key pages.
+2. **Check your PHP version.** WordPress 7.0 raised the minimum PHP version, and 7.1 builds on that. Ask your host what PHP version your site runs, and move to a supported PHP 8 release if you are still on an old one.
+3. **Test your most-visited page on a phone.** Open your homepage and your most-visited page on a real phone after updating, and try the new responsive style controls on one heading and one image.
+4. **Use the Tabs block on your longest page.** Pick one page that scrolls forever, like admissions, services or FAQs, and rebuild it with tabs. It is a quick win that visitors notice immediately.
+
+## The honest caveat
+
+I verified every feature in this post against the official WordPress 7.1 release notes, but I have not yet run 7.1 on every kind of client site. The responsive controls work best with themes that support them, and the custom breakpoints feature needs theme.json support, so an older theme may not show every new control. A major release is also the moment when an out-of-date plugin is most likely to complain. That is why the backup and staging steps above are not optional, they are the whole point.
+
+Which page on your website looks worst on a phone right now, and what would you fix first if you could do it yourself?
+
+---
+
+**Sources:** WordPress.org, *WordPress 7.1* — official release notes, August 2026 — [wordpress.org/download/releases/7-1](https://wordpress.org/download/releases/7-1/). Release timing and the WordPress 7.2 beta date (December 8, 2026) via InstaWP, *WordPress 7.0: Release Date, Features, PHP 7.4 & Latest 7.0.8* — [instawp.com/wordpress-7-0](https://instawp.com/wordpress-7-0/).
+
+*Title image: original clay artwork created for this blog.*
