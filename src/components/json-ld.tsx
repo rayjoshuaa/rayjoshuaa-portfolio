@@ -36,7 +36,7 @@ export function JsonLd() {
         "https://www.linkedin.com/in/rayjoshua432/",
         "https://x.com/ry_devs",
         "https://instagram.com/rayjoshua432",
-        "https://facebook.com/rj432",
+        "https://www.facebook.com/rayjoshuaa/",
       ],
       knowsAbout: DATA.skills.map((s) => s.name),
       knowsLanguage: ["English", "Tagalog", "Bisaya"],
