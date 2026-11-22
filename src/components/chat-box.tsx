@@ -111,7 +111,12 @@ const INTENTS: Intent[] = [
   },
 ];
 
-function answer(q: string): string {
+const FALLBACK = `That's something I don't know yet — but Ray will happily answer you personally. Just email him at ${EMAIL} and ask away; he reads and replies to every message himself.`;
+
+// Returns the built-in reply when a known topic matches, or null when the
+// question needs the AI. Local answers are instant — the AI call is the slow
+// path, so it is only used for questions the built-in topics don't cover.
+function answer(q: string): string | null {
   const s = ` ${q.toLowerCase()} `;
   let best: Intent | null = null;
   let bestScore = 0;
@@ -126,7 +131,7 @@ function answer(q: string): string {
     }
   }
   if (best && bestScore > 0) return best.reply;
-  return `That's something I don't know yet — but Ray will happily answer you personally. Just email him at ${EMAIL} and ask away; he reads and replies to every message himself.`;
+  return null;
 }
 
 const SYSTEM_PROMPT = `You are the friendly AI assistant on Ray Joshua Balingkit's portfolio website (rayjoshuaa.pages.dev). Answer visitor questions about Ray, his services and his work. Facts:
@@ -147,10 +152,9 @@ interface Msg2 {
 }
 
 async function askAI(history: Msg[]): Promise<string> {
-  const fallback = answer(history[history.length - 1]?.text ?? "");
   try {
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 30000);
+    const timer = setTimeout(() => ctrl.abort(), 8000);
     const messages: Msg2[] = [
       { role: "system", content: SYSTEM_PROMPT },
       ...history.slice(-8).map(
@@ -172,7 +176,7 @@ async function askAI(history: Msg[]): Promise<string> {
     if (!text) throw new Error("empty ai reply");
     return text.slice(0, 1500);
   } catch {
-    return fallback;
+    return FALLBACK;
   }
 }
 
@@ -200,6 +204,15 @@ export function ChatBox() {
     setMsgs(history);
     setInput("");
     setTyping(true);
+    // Fast path: known topics answer instantly from the built-in replies.
+    const local = answer(q);
+    if (local) {
+      await new Promise((r) => setTimeout(r, 450));
+      setTyping(false);
+      setMsgs((m) => [...m, { from: "bot", text: local }]);
+      return;
+    }
+    // Slow path: only questions with no built-in match go to the AI.
     const reply = await askAI(history);
     setTyping(false);
     setMsgs((m) => [...m, { from: "bot", text: reply }]);
