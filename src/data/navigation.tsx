@@ -38,7 +38,7 @@ export const CONTACT = {
       },
       Facebook: {
         name: "Facebook",
-        url: "https://facebook.com/rj432",
+        url: "https://www.facebook.com/rayjoshuaa/",
         icon: Icons.facebook,
         navbar: true,
       },
