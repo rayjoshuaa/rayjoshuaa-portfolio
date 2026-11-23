@@ -1,0 +1,61 @@
+---
+title: "Chrome 158 Is Out — Your Website Can Now Install Itself as an App"
+publishedAt: "2026-11-23"
+summary: "Chrome 158 shipped on November 17, 2026, and its headline feature is the Web Install API: a website can now ask visitors to install it as an app with one button, right from the page. The same release patches 204 security flaws, brings WebHID to Android, and switches off XSLT. Here is what changed, what it means for your school or business website, and what to check first."
+tags: ["web-development", "freelancing"]
+image: "/assets/blog/chrome-158-web-install-api.jpg"
+---
+
+**Chrome 158 shipped on November 17, 2026, and it quietly changed what a website can do: your site can now ask visitors to install it as an app, with one button, right from the page.** No app store, no download link, no hunting through the browser menu.
+
+That is the headline from Google's latest stable release. For anyone who runs a school or small business website, it is the most practical browser update in a long time, and it arrived with **204 security fixes**.
+
+## What the release actually includes
+
+Google promoted Chrome 158 to the stable channel on November 17, 2026, as version **158.0.8127.36/.37** for Windows and Mac, **158.0.8127.36** for Linux, and **158.0.8127.42** for Android. Here are the changes that matter most.
+
+**The Web Install API.** This is the big one. A website can now call `navigator.install()` and prompt the visitor to install the site as a web app, given a manifest URL and an optional manifest ID. It even works across origins, so one site can offer to install another site's app. A matching HTML `<install>` element does the same job without JavaScript. Before this, developers had to catch the `beforeinstallprompt` event and build their own install flow around it.
+
+**204 security fixes, 6 of them Critical.** All six critical flaws are memory-safety bugs: three use-after-free flaws, two out-of-bounds writes, and one buffer overflow, spread across WebView, GPU, Media, Garbage Collection, ANGLE, and WebAudio. Google does not report any of them as actively exploited. One detail worth noting: Anthropic researcher Xinyang Ge reported 15 of the 204 bugs, several with help from the Claude AI model.
+
+**WebHID arrives on Android.** The WebHID API lets a web page talk to hardware like custom keyboards and game controllers. It has been on desktop Chrome since version 89, and Chrome 158 brings it to Android 17 and later.
+
+**XSLT is switched off.** Chrome 158 stops running XSLT, the old technology for transforming XML documents. Sites still using it get an origin trial or an enterprise policy escape hatch until Chrome 176 in August 2027. If an old school system still serves pages that depend on XSLT, this is the release that breaks them.
+
+## Why it matters: the install step is where school and business sites lose people
+
+Most people read browser releases as a developer story: new APIs, new internals, new security numbers. But for a school or a small business, a browser update is a people story. The person visiting your site is usually a parent on a phone, or a customer who found you through a search.
+
+That is why the Web Install API matters more than it looks. Until now, installing a website as an app meant the visitor had to know the trick: open the browser menu, find "Add to Home screen," and hope the site was set up for it. Almost nobody does that. A visible "Install our app" button on the page itself changes the whole flow.
+
+What most people get wrong is thinking this replaces the app store. It does not. It is a shortcut, not a new platform. Your site still needs a proper web app manifest, the file that tells the browser the app's name, icon, and start page. The API only changes how the install is offered, not what makes a site installable. A site with no manifest still cannot be installed, button or no button.
+
+The security side matters too. **204 fixes** is one of the largest batches in a single Chrome release, and the six Critical flaws could have let a bad web page run code on a visitor's device. The fix is simple: update Chrome. If your school computers update automatically, they are probably already on 158.
+
+## In my classroom and client work
+
+I build WordPress and Elementor sites for small businesses alongside teaching ICT and robotics in Bangkok, and I run a lesson-plan site for my own classes that already works as an installable web app. So I read releases like this one with two questions: what gets easier for me, and what gets easier for the person using the site after I hand it over?
+
+The answer this time is mostly the second one. In my ICT classes, students open our class site on their phones every lesson. Right now, getting the site onto their home screen means walking them through the browser menu, one phone at a time, and half of them lose the thread before the site is installed. With the Web Install API, the site itself can offer a clear install button on the homepage, and the whole class can be set up in a minute.
+
+The same logic applies to the school and business sites I build for clients. A school website with an install button means parents tap once and the site behaves like the school's app, without the school paying anyone to build a separate app-store app. A small business gets the same effect: a customer who installs the site comes back with one tap instead of searching again.
+
+## Steal this: five things to do with Chrome 158 this week
+
+1. **Update Chrome everywhere you control it.** Open Chrome, go to Help, then About Google Chrome, and check the version. You want **158.0.8127.36** or later on desktop, and **158.0.8127.42** on Android. Do the school computers and the office computers too, not just your own.
+2. **Check whether your site already has a manifest.** If your site is already installable, it has a web app manifest file. If it has no manifest, the install button cannot work yet, and adding one is the first job.
+3. **Put the install button where visitors actually land.** A button buried in a settings menu is nearly as hidden as the browser menu was. Put "Install our app" on the homepage, where parents and customers see it on their first visit.
+4. **Test it on a real phone.** Open your site in Chrome on Android, tap the install button, and check what lands on the home screen. Does it open full screen? Does the icon look right? Fix what looks wrong before you tell anyone about it.
+5. **Check for XSLT before it breaks something.** If your school runs an old system that serves XML pages, open those pages in Chrome 158 and confirm they still work. If they do not, that system needs a plan before the origin trial ends in August 2027.
+
+## The honest caveat
+
+I verified every fact in this post against Google's official Chrome 158 release notes and the Chrome Releases blog, but the Web Install API is brand new. It only exists in Chrome 158 and newer, so it reaches your visitors gradually as they update, and other browsers still use their own install flow. Test it on your own site before you promise parents or customers anything.
+
+If your school or business website had an "Install as app" button on the homepage, what would you want it to open first?
+
+---
+
+**Sources:** Google Chrome Platform Status, *Chrome 158 Release Notes* — [chromestatus.com/release-notes/158](https://chromestatus.com/release-notes/158). Google Chrome Releases blog, *Stable Channel Update for Desktop*, November 17, 2026 — [chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html](https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01699533288.html). Severity breakdown and AI-assisted discovery details via Malwarebytes, *Chrome patches six critical flaws, two found with AI's help* — [malwarebytes.com/blog/bugs/2026/11/chrome-patches-six-critical-flaws-two-found-with-ais-help](https://www.malwarebytes.com/blog/bugs/2026/11/chrome-patches-six-critical-flaws-two-found-with-ais-help).
+
+*Title image: original clay artwork created for this blog.*
